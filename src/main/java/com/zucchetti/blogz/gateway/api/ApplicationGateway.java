@@ -11,7 +11,6 @@ import javax.ws.rs.core.Response;
 import org.eclipse.microprofile.rest.client.inject.RestClient;
 
 import com.zucchetti.blogz.gateway.UserService;
-import com.zucchetti.blogz.gateway.model.CreateUserResponse;
 import com.zucchetti.blogz.gateway.model.User;
 
 @Path("/api-gateway")
@@ -27,7 +26,6 @@ public class ApplicationGateway
 	@POST
 	public Response saveUser(User user)
 	{
-		final CreateUserResponse b = CreateUserResponse.createFromResponse(userService.createUser(user));
-		return Response.ok(b).build();
+		return userService.createUser(user);
 	}
 }
