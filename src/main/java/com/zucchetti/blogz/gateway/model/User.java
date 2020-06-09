@@ -6,12 +6,12 @@ import javax.validation.constraints.NotNull;
 
 public class User
 {
-	public @NotNull String id;
+	public @NotNull int id;
 	public @NotEmpty String username;
-	public @Email(regexp = "username@email.com") String email;
+	public @Email String email;
 
 	public User()	{}
-	public User(String id, String username, String email)
+	public User(int id, String username, String email)
 	{
 		this.id = id;
 		this.username = username;
