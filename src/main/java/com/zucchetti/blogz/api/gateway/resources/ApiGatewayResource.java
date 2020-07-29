@@ -2,7 +2,9 @@ package com.zucchetti.blogz.api.gateway.resources;
 
 import javax.inject.Inject;
 import javax.ws.rs.Consumes;
+import javax.ws.rs.DELETE;
 import javax.ws.rs.POST;
+import javax.ws.rs.PUT;
 import javax.ws.rs.Path;
 import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
@@ -41,14 +43,14 @@ public class ApiGatewayResource
 		return userService.findUser(user);
 	}
 	
-	@POST
+	@PUT
 	@Path("/updateUser")
     public User updateUser(User user) 
     {
 		return userService.updateUser(user);
     }
 	
-	@POST
+	@DELETE
 	@Path("/deleteUser")
     public void deleteUser(User user) 
     {
