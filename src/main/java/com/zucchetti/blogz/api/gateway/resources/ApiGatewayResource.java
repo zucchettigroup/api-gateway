@@ -1,8 +1,11 @@
 package com.zucchetti.blogz.api.gateway.resources;
 
+import java.util.List;
+
 import javax.inject.Inject;
 import javax.ws.rs.Consumes;
 import javax.ws.rs.DELETE;
+import javax.ws.rs.GET;
 import javax.ws.rs.POST;
 import javax.ws.rs.PUT;
 import javax.ws.rs.Path;
@@ -62,5 +65,26 @@ public class ApiGatewayResource
     public Blog createBlog(Blog blog) 
     {
 		return blogService.createBlog(blog);
+    }
+	
+	@PUT
+	@Path("/updateBlog")
+    public Blog updateBlog(Blog blog)
+    {
+		return blogService.updateBlog(blog);
+    }
+	
+	@DELETE
+	@Path("/deleteBlog")
+    public Blog deleteBlog(Blog blog) 
+    {
+		return blogService.deleteBlog(blog);
+    }
+	
+	@GET
+	@Path("/findBlogs")
+    public List<Blog> findBlogs() 
+    {
+		return blogService.findBlogs();
     }
 }

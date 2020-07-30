@@ -33,5 +33,4 @@ public interface UserService
 	@Path("/deleteUser")
 	@DELETE
 	User deleteUser(User user);
-	
 }
