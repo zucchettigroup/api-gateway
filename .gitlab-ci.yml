@@ -1,6 +1,6 @@
 image: maven:latest
 
-stage:
+stages:
     - build
 
 build:
