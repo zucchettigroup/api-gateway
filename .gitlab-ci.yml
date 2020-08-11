@@ -9,4 +9,4 @@ stages:
 build:
     stage: build
     script:
-     - mvn compile
+     - mvn --settings settings.xml compile
