@@ -6,6 +6,7 @@ variables:
 stages:
     - build
     - test
+    
 build:
     stage: build
     script:
