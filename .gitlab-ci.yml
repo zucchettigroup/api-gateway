@@ -7,10 +7,10 @@ stages:
     - build
     - test
     
-build:
+job1:
     stage: build
     script:
      - mvn --settings settings.xml compile
 
-test:
+job2:
     stage: test
