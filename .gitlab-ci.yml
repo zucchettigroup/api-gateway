@@ -12,7 +12,7 @@ build:
     script:
      - mvn --settings settings.xml clean package
 
-dockerimage
+dockerimage:
     stage: dockerimage
     script:
-     - sudo docker compile 
+     - sudo docker compile src/main/docker/Dockerfile
