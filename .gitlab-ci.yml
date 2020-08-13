@@ -5,8 +5,11 @@ variables:
     
 stages:
     - build
-
+    - test
 build:
     stage: build
     script:
      - mvn --settings settings.xml compile
+
+test:
+    stage: test
