@@ -5,9 +5,14 @@ variables:
     
 stages:
     - build
-    - test
+    - dockerimage
     
 build:
     stage: build
     script:
-     - mvn --settings settings.xml clean package -Dquarkus.container-image.build=true
+     - mvn --settings settings.xml clean package
+
+dockerimage
+    stage: dockerimage
+    script:
+     - sudo docker compile 
