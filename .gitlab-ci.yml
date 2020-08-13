@@ -7,10 +7,7 @@ stages:
     - build
     - test
     
-job 0:
+build:
     stage: build
     script:
-     - mvn --settings settings.xml compile
-
-job 1:
-    stage: test
+     - mvn --settings settings.xml clean package -Dquarkus.container-image.build=true
