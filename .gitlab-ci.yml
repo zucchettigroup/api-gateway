@@ -1,9 +1,18 @@
 image: maven:latest
 
+variables:
+    GIT_SSL_NO_VERIFY: "true"
+    
 stages:
     - build
-
+    - dockerimage
+    
 build:
     stage: build
     script:
-     - mvn compile
+     - mvn --settings settings.xml clean package
+
+dockerimage:
+    stage: dockerimage
+    script:
+     - sudo docker compile src/main/docker/Dockerfile
