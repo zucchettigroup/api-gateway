@@ -2,6 +2,8 @@ package com.zucchetti.blogz.api.gateway.resources;
 
 import java.util.List;
 
+import javax.annotation.security.PermitAll;
+import javax.annotation.security.RolesAllowed;
 import javax.inject.Inject;
 import javax.ws.rs.Consumes;
 import javax.ws.rs.DELETE;
@@ -10,8 +12,9 @@ import javax.ws.rs.POST;
 import javax.ws.rs.PUT;
 import javax.ws.rs.Path;
 import javax.ws.rs.Produces;
+import javax.ws.rs.core.Context;
+import javax.ws.rs.core.HttpHeaders;
 import javax.ws.rs.core.MediaType;
-
 import org.eclipse.microprofile.rest.client.inject.RestClient;
 
 import com.zucchetti.blogz.api.gateway.models.Blog;
@@ -24,6 +27,9 @@ import com.zucchetti.blogz.api.gateway.services.UserService;
 @Consumes(MediaType.APPLICATION_JSON)
 public class ApiGatewayResource
 {
+	@Context
+	private HttpHeaders headers;
+	
 	@Inject
 	@RestClient
 	UserService userService;
@@ -32,6 +38,7 @@ public class ApiGatewayResource
 	@RestClient
 	BlogService blogService;
 	
+	@PermitAll
 	@Path("/createUser")
 	@POST
 	public User createUser(User user)
@@ -39,13 +46,15 @@ public class ApiGatewayResource
 		return userService.createUser(user);
 	}
 	
+	@PermitAll
 	@Path("/findUser")
 	@POST
-	public User findUser(User user)
+	public String findUser(User user)
 	{
 		return userService.findUser(user);
 	}
 	
+	@RolesAllowed({ "User", "Admin" })
 	@PUT
 	@Path("/updateUser")
     public User updateUser(User user) 
@@ -53,6 +62,7 @@ public class ApiGatewayResource
 		return userService.updateUser(user);
     }
 	
+	@RolesAllowed({ "User", "Admin" })
 	@DELETE
 	@Path("/deleteUser")
     public void deleteUser(User user) 
@@ -60,6 +70,7 @@ public class ApiGatewayResource
 		userService.deleteUser(user);
     }
 	
+	@RolesAllowed({ "User", "Admin" })
 	@POST
 	@Path("/createBlog")
     public Blog createBlog(Blog blog) 
@@ -67,6 +78,7 @@ public class ApiGatewayResource
 		return blogService.createBlog(blog);
     }
 	
+	@RolesAllowed({ "User", "Admin" })
 	@PUT
 	@Path("/updateBlog")
     public Blog updateBlog(Blog blog)
@@ -74,17 +86,28 @@ public class ApiGatewayResource
 		return blogService.updateBlog(blog);
     }
 	
+	@RolesAllowed({ "User", "Admin" })
 	@DELETE
 	@Path("/deleteBlog")
     public Blog deleteBlog(Blog blog) 
     {
+		
 		return blogService.deleteBlog(blog);
     }
 	
+	@RolesAllowed({ "User", "Admin" })
 	@GET
 	@Path("/findBlogs")
     public List<Blog> findBlogs() 
     {
 		return blogService.findBlogs();
+    }
+	
+	@PermitAll
+	@GET
+	@Path("/dockerTest")
+    public Blog dockerTest() 
+    {
+		return blogService.dockerTest();
     }
 }
