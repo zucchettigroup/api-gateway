@@ -1,7 +1,6 @@
 package com.zucchetti.blogz.api.gateway.resources;
 
 import java.util.List;
-
 import javax.annotation.security.PermitAll;
 import javax.annotation.security.RolesAllowed;
 import javax.inject.Inject;
@@ -16,8 +15,8 @@ import javax.ws.rs.core.Context;
 import javax.ws.rs.core.HttpHeaders;
 import javax.ws.rs.core.MediaType;
 import org.eclipse.microprofile.rest.client.inject.RestClient;
-
 import com.zucchetti.blogz.api.gateway.models.Blog;
+import com.zucchetti.blogz.api.gateway.models.Keys;
 import com.zucchetti.blogz.api.gateway.models.User;
 import com.zucchetti.blogz.api.gateway.services.BlogService;
 import com.zucchetti.blogz.api.gateway.services.UserService;
@@ -68,6 +67,14 @@ public class ApiGatewayResource
     public void deleteUser(User user) 
     {
 		userService.deleteUser(user);
+    }
+	
+	@RolesAllowed({ "Admin" })
+	@GET
+	@Path("/generateKeys")
+    public Keys generateKey() 
+    {
+		return userService.generateKey();
     }
 	
 	@RolesAllowed({ "User", "Admin" })
