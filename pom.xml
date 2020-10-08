@@ -45,26 +45,30 @@
       <scope>test</scope>
     </dependency>
     <dependency>
-	    <groupId>io.quarkus</groupId>
-	    <artifactId>quarkus-rest-client</artifactId>
-	</dependency>
-	<dependency>
-	    <groupId>io.quarkus</groupId>
-	    <artifactId>quarkus-resteasy-jsonb</artifactId>
-	</dependency>
-	<dependency>
-            <groupId>io.quarkus</groupId>
-            <artifactId>quarkus-container-image-docker</artifactId>
-     </dependency>
-     <dependency>
-	    <groupId>io.quarkus</groupId>
-	    <artifactId>quarkus-smallrye-jwt</artifactId>
-	</dependency>
-	<dependency>
-	    <groupId>com.nimbusds</groupId>
-	    <artifactId>nimbus-jose-jwt</artifactId>
-	    <version>9.0.1</version>
-	</dependency>
+      <groupId>io.quarkus</groupId>
+      <artifactId>quarkus-rest-client</artifactId>
+    </dependency>
+    <dependency>
+      <groupId>io.quarkus</groupId>
+      <artifactId>quarkus-resteasy-jsonb</artifactId>
+    </dependency>
+    <dependency>
+      <groupId>io.quarkus</groupId>
+      <artifactId>quarkus-container-image-docker</artifactId>
+    </dependency>
+    <dependency>
+      <groupId>io.quarkus</groupId>
+      <artifactId>quarkus-smallrye-jwt</artifactId>
+    </dependency>
+    <dependency>
+      <groupId>com.nimbusds</groupId>
+      <artifactId>nimbus-jose-jwt</artifactId>
+      <version>9.0.1</version>
+    </dependency>
+    <dependency>
+      <groupId>io.quarkus</groupId>
+      <artifactId>quarkus-smallrye-health</artifactId>
+    </dependency>
   </dependencies>
   <build>
     <plugins>
