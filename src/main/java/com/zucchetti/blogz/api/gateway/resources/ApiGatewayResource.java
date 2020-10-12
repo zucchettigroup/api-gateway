@@ -112,6 +112,8 @@ public class ApiGatewayResource
 	
 	@PermitAll
 	@GET
+	@Counted(name = "dockerTestCounter", description = "/api-gateway/dockerTest counter.")
+	@Timed(name = "dockerTestTimer", description = "/api-gateway/dockerTest timer.", unit = MetricUnits.MILLISECONDS)
 	@Path("/dockerTest")
     public Blog dockerTest() 
     {
