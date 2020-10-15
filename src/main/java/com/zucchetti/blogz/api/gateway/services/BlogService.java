@@ -40,7 +40,7 @@ public interface BlogService
 	@GET
 	List<Blog> findBlogs();
 	
-//	@Path("/dockerTest")
-//	@GET
-//	Blog dockerTest();
+	@Path("/dockerTest")
+	@GET
+	Blog dockerTest();
 }

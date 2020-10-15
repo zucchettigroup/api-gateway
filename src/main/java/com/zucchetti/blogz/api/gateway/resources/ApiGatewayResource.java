@@ -14,6 +14,9 @@ import javax.ws.rs.Produces;
 import javax.ws.rs.core.Context;
 import javax.ws.rs.core.HttpHeaders;
 import javax.ws.rs.core.MediaType;
+import org.eclipse.microprofile.metrics.MetricUnits;
+import org.eclipse.microprofile.metrics.annotation.Counted;
+import org.eclipse.microprofile.metrics.annotation.Timed;
 import org.eclipse.microprofile.rest.client.inject.RestClient;
 import com.zucchetti.blogz.api.gateway.models.Blog;
 import com.zucchetti.blogz.api.gateway.models.Keys;
@@ -93,12 +96,4 @@ public class ApiGatewayResource
     {
 		return blogService.findBlogs();
     }
-	
-//	@PermitAll
-//	@GET
-//	@Path("/dockerTest")
-//    public Blog dockerTest() 
-//    {
-//		return blogService.dockerTest();
-//    }
 }
