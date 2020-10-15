@@ -15,7 +15,7 @@ import org.eclipse.microprofile.rest.client.annotation.RegisterClientHeaders;
 import org.eclipse.microprofile.rest.client.inject.RegisterRestClient;
 
 import com.zucchetti.blogz.api.gateway.models.Blog;
-import com.zucchetti.blogz.users.security.StoresClientHeadersFactoryImpl;
+import com.zucchetti.blogz.api.gateway.security.StoresClientHeadersFactoryImpl;
 
 @Path("/blog")
 @RegisterRestClient(configKey = "blog-service")
@@ -40,7 +40,7 @@ public interface BlogService
 	@GET
 	List<Blog> findBlogs();
 	
-	@Path("/dockerTest")
-	@GET
-	Blog dockerTest();
+//	@Path("/dockerTest")
+//	@GET
+//	Blog dockerTest();
 }

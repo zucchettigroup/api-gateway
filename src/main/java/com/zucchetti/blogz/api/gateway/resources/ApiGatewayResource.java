@@ -26,8 +26,8 @@ import com.zucchetti.blogz.api.gateway.services.UserService;
 @Consumes(MediaType.APPLICATION_JSON)
 public class ApiGatewayResource
 {
-	@Context
-	private HttpHeaders headers;
+//	@Context
+//	private HttpHeaders headers;
 	
 	@Inject
 	@RestClient
@@ -36,22 +36,6 @@ public class ApiGatewayResource
 	@Inject
 	@RestClient
 	BlogService blogService;
-	
-	@PermitAll
-	@Path("/createUser")
-	@POST
-	public User createUser(User user)
-	{
-		return userService.createUser(user);
-	}
-	
-	@PermitAll
-	@Path("/findUser")
-	@POST
-	public String findUser(User user)
-	{
-		return userService.findUser(user);
-	}
 	
 	@RolesAllowed({ "User", "Admin" })
 	@PUT
@@ -110,11 +94,11 @@ public class ApiGatewayResource
 		return blogService.findBlogs();
     }
 	
-	@PermitAll
-	@GET
-	@Path("/dockerTest")
-    public Blog dockerTest() 
-    {
-		return blogService.dockerTest();
-    }
+//	@PermitAll
+//	@GET
+//	@Path("/dockerTest")
+//    public Blog dockerTest() 
+//    {
+//		return blogService.dockerTest();
+//    }
 }
