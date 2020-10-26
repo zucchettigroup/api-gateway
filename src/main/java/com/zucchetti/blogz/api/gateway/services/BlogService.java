@@ -2,6 +2,7 @@ package com.zucchetti.blogz.api.gateway.services;
 
 import java.util.List;
 
+import javax.enterprise.context.ApplicationScoped;
 import javax.ws.rs.Consumes;
 import javax.ws.rs.DELETE;
 import javax.ws.rs.GET;
@@ -22,6 +23,7 @@ import com.zucchetti.blogz.api.gateway.security.StoresClientHeadersFactoryImpl;
 @RegisterClientHeaders(value = StoresClientHeadersFactoryImpl.class)
 @Produces(MediaType.APPLICATION_JSON)
 @Consumes(MediaType.APPLICATION_JSON)
+@ApplicationScoped
 public interface BlogService
 {
 	@Path("/createBlog")
