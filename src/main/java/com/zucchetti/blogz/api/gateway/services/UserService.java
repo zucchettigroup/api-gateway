@@ -42,4 +42,8 @@ public interface UserService
 	@Path("/generateKeys")
 	@GET
     Keys generateKey();
+	
+	@Path("/sessionTokenTest")
+	@GET
+	Response sessionTokenTest();
 }

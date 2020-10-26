@@ -58,4 +58,12 @@ public class ApiGatewayPublicResurce {
     {
 		return blogService.dockerTest();
     }
+	
+	@PermitAll
+	@Path("/sessionTokenTest")
+	@GET
+	public Response sessionTokenTest()
+	{
+		return userService.sessionTokenTest();
+	}
 }
