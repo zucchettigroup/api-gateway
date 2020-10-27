@@ -9,9 +9,9 @@ import com.nimbusds.jose.jwk.RSAKey;
 
 public class KeyManager {
 	
-	private static final String ENCRYPTION_KEY_PATHS = "../src/main/resources/META-INF/resources/JWK_ENCRYPTION_KEY_PAIR.txt";
-	private static final String SIGNATURE_KEY_PATHS = "../src/main/resources/META-INF/resources/JWK_SIGNATURE_KEY_PAIR.txt";
-			
+	private static final String ENCRYPTION_KEY_PATHS = "../src/main/resources/META-INF/key/JWK_ENCRYPTION_KEY_PAIR.txt";
+	private static final String SIGNATURE_KEY_PATHS = "../src/main/resources/META-INF/key/JWK_SIGNATURE_KEY_PAIR.txt";
+	
 	public static RSAKey getEncryptionKey() throws IOException, ParseException
 	{
 		return getKey(ENCRYPTION_KEY_PATHS);
