@@ -21,27 +21,28 @@
 # docker run -i --rm -p 8080:8080 -p 5005:5005 -e JAVA_ENABLE_DEBUG="true" quarkus/code-with-quarkus-jvm
 #
 ###
-FROM centos:8
+FROM alpine:latest
 
-ARG JAVA_PACKAGE=java-11-openjdk-headless
-ARG RUN_JAVA_VERSION=1.3.5
+ARG JAVA_PACKAGE=openjdk11-jre-headless
+ARG RUN_JAVA_VERSION=1.3.8
 
 ENV LANG='en_US.UTF-8' LANGUAGE='en_US:en'
 
 # Install java and the run-java script
 # Also set up permissions for user `1001`
-RUN yum install -y curl ca-certificates ${JAVA_PACKAGE} \
-	&& yum -y install iputils \
-    && yum -y update \
-    && yum -y clean all \
-    && mkdir /deployments \
-    && chown 1001 /deployments \
-    && chmod "g+rwX" /deployments \
-    && chown 1001:root /deployments \
-    && curl https://repo1.maven.org/maven2/io/fabric8/run-java-sh/${RUN_JAVA_VERSION}/run-java-sh-${RUN_JAVA_VERSION}-sh.sh -o /deployments/run-java.sh \
-    && chown 1001 /deployments/run-java.sh \
-    && chmod 540 /deployments/run-java.sh \
-    && echo "securerandom.source=file:/dev/urandom" >> /etc/alternatives/jre/lib/security/java.security
+RUN apk add --no-cache curl ca-certificates ${JAVA_PACKAGE} 
+RUN apk update ca-certificates
+RUN mkdir /deployments 
+RUN chown 1001 /deployments 
+RUN chmod "g+rwX" /deployments 
+RUN chown 1001:root /deployments 
+RUN curl https://repo1.maven.org/maven2/io/fabric8/run-java-sh/${RUN_JAVA_VERSION}/run-java-sh-${RUN_JAVA_VERSION}-sh.sh -o /deployments/run-java.sh
+RUN chown 1001 /deployments/run-java.sh
+RUN chmod 540 /deployments/run-java.sh
+RUN cat  /deployments/run-java.sh
+RUN echo "securerandom.source=file:/dev/urandom" >> /usr/lib/jvm/java-11-openjdk/lib/security/java.security
+
+RUN apk add iputils
 
 # Configure the JAVA_OPTIONS, you can add -XshowSettings:vm to also display the heap size.
 ENV JAVA_OPTIONS="-Dquarkus.http.host=0.0.0.0 -Djava.util.logging.manager=org.jboss.logmanager.LogManager"

@@ -21,7 +21,7 @@ import io.quarkus.test.security.TestSecurity;
 import io.restassured.RestAssured;
 
 @QuarkusTest
-@TestHTTPEndpoint(ApiGatewayResource.class)
+@TestHTTPEndpoint(ApiGatewayResource.class) 
 class ApiGatewayResourceTest
 {
 	@InjectMock
