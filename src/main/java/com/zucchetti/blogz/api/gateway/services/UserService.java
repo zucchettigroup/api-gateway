@@ -29,7 +29,7 @@ public interface UserService
 	
 	@Path("/findUser")
 	@POST
-	Response findUser(User user);
+	String findUser(User user);
 	
 	@Path("/updateUser")
 	@PUT

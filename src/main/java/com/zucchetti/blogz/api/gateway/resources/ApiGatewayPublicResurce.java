@@ -44,7 +44,7 @@ public class ApiGatewayPublicResurce {
 	@PermitAll
 	@Path("/findUser")
 	@POST
-	public Response findUser(User user)
+	public String findUser(User user)
 	{
 		return userService.findUser(user);
 	}
