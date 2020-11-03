@@ -50,6 +50,6 @@ COPY target/lib/* /deployments/lib/
 COPY target/*-runner.jar /deployments/app.jar
 
 EXPOSE 8080 5005
-#USER 1001
+USER 1001
 
 ENTRYPOINT [ "/deployments/run-java.sh" ]
